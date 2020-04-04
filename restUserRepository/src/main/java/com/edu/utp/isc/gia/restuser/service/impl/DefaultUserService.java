@@ -90,7 +90,7 @@ public class DefaultUserService implements InterUserService {
                 userRepository.deleteById(id);
                 return true;
             } else {
-                return null;
+                return false;
             }
         }
     }    

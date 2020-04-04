@@ -67,7 +67,7 @@ public class UserController {
         if( id == null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body( new Exception("Indentificador Invalido"));
         }
-        UserDto usr = userService.getOne(null);
+        UserDto usr = userService.getOne(id);
          if(usr == null){
             return ResponseEntity.status(HttpStatus. NO_CONTENT)
                     .build();
