@@ -29,7 +29,11 @@ public class DefaultUserService implements InterUserService {
     private UserRepository userRepository;
     @Autowired
     private ModelMapper modelMapper;
-    
+
+    public DefaultUserService(UserRepository userRepository, ModelMapper modelMapper) {
+        this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
+    }
     
     @Override
     public UserDto save(UserDto user) throws Throwable {
