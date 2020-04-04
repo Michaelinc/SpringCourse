@@ -5,12 +5,15 @@
  */
 package com.edu.utp.isc.gia.restuser.service.impl;
 
+import com.edu.utp.isc.gia.restuser.data.repository.UserRepository;
 import com.edu.utp.isc.gia.restuser.service.InterUserService;
 import com.edu.utp.isc.gia.restuser.web.dto.Consecutivo;
 import com.edu.utp.isc.gia.restuser.web.dto.UserDto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,7 +22,38 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DefaultUserService implements InterUserService {
-    private List<UserDto> users = new ArrayList<>();
+
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private ModelMapper modelMapper;
+    
+    
+    @Override
+    public UserDto save(UserDto user) throws Throwable {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UserDto getOne(Long id) throws Throwable {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<UserDto> getAll() throws Throwable {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UserDto update(Long id, UserDto user) throws Throwable {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Boolean delete(Long id) throws Throwable {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    /*private List<UserDto> users = new ArrayList<>();
 
     @Override
     public UserDto save(UserDto user) throws Throwable {
@@ -74,5 +108,6 @@ public class DefaultUserService implements InterUserService {
         }
         Boolean remove = users.remove(getOne(id));
         return remove;
-    }
+    }*/
+    
 }
