@@ -83,7 +83,7 @@ public class UserController {
         }
         Boolean result = userService.delete(id);
         if (result) {
-            return ResponseEntity.status(HttpStatus.OK).body(result);
+            return ResponseEntity.status(HttpStatus.OK).body(result.toString());
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
