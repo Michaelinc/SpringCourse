@@ -23,6 +23,9 @@ public class DefaultUserService implements InterUserService {
 
     @Override
     public UserDto save(UserDto user) throws Throwable {
+        if(user == null){
+            throw new Exception("Usuario Invalido");
+        }
          user.setId(Consecutivo.generarConsecutivo((ArrayList<UserDto>) users));
          user.setUsername(user.getUsername().toLowerCase());
          users.add(user);
@@ -30,28 +33,46 @@ public class DefaultUserService implements InterUserService {
      }
      
     @Override
-     public List<UserDto> getAll() {
+     public List<UserDto> getAll() throws Throwable{
         return users;
     }
 
     @Override
-    public UserDto getOne(Long id) {
+    public UserDto getOne(Long id) throws Throwable{
+         if (id == null) {
+            throw new Exception("Identificador Invalido");
+        }
         for(UserDto u : users){
             if(Objects.equals(u.getId(), id)){
                 return u;
             }
         }
-        return null;
+         return null;   
+
     }
 
     @Override
     public UserDto update(Long id, UserDto user) throws Throwable {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (id == null) {
+            throw new Exception("Identificador Invalido");
+        }else if( user == null){
+            throw new Exception("Usuario Invalido");
+        }
+        UserDto us = getOne(id);
+        if (us != null) {
+            user.setId(id);
+            users.set(users.indexOf(us), user);
+            return getOne(id);
+        }
+        return null;
     }
 
     @Override
     public Boolean delete(Long id) throws Throwable {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (id == null) {
+            throw new Exception("Identificador nulo");
+        }
+        Boolean remove = users.remove(getOne(id));
+        return remove;
     }
-
 }
